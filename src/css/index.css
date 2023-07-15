@@ -3,11 +3,11 @@
 }
 
 .breed-select {
-    margin-left: 20px;
-    margin-top: 20px;
-    height: 30px;
-    font-size: 14px;
-    border-radius: 5px;
+    font-size: large;
+    /* display: inline-block; */
+    width: 50%;
+    color: gray;
+    background-color: gray;
 }
 
 
@@ -23,5 +23,43 @@
 }
 
 .hidden {
-    display: none;
+    /* display: none; */
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    border: 0;
+    padding: 0;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    margin: -1px;
+}
+
+body {
+    width: 850px
+}
+
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid gray;
+    border-bottom-color: #FF3D00;
+    border-radius: 50%;
+    display: block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
