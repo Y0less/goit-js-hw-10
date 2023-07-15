@@ -6,16 +6,29 @@ const refs = {
   loader: document.querySelector('.loader'),
   error: document.querySelector('.error'),
   catInfo: document.querySelector('.cat-info'),
+  head: document.querySelector('head'),
 };
 
-fetchBreeds().then(data => renderCollection(data));
+hideCollectionToogle();
+errorToogle();
+
+fetchBreeds()
+  .then(data => (renderCollection(data), hideCollectionToogle()))
+  .catch(error => (console.log(error), errorToogle()))
+  .finally(() => loadingToogle());
+
 refs.breedSelect.addEventListener('change', onSelect);
 
 function onSelect() {
-  fetchCatByBreed(refs.breedSelect.value).then(data => renderCatDescr(data));
+  refs.catInfo.innerHTML = '';
+  loadingToogle();
+  fetchCatByBreed(refs.breedSelect.value)
+    .then(data => renderCatDescr(data))
+    .catch(error => (console.log(error), errorToogle()))
+    .finally(() => loadingToogle());
 }
 
-function renderCollection(data) {
+function renderCollection(data = []) {
   refs.breedSelect.insertAdjacentHTML(
     'beforeend',
     data
@@ -24,13 +37,25 @@ function renderCollection(data) {
   );
 }
 
-function renderCatDescr(data) {
+function renderCatDescr(data = []) {
   const { name, description, temperament } = data[0].breeds[0];
   refs.catInfo.innerHTML =
     ('beforeend',
     `<img src="${data[0].url}" alt="" width="300">
-        <class="js-cat-descr">
+        <div class="js-cat-descr">
   <h1>${name}</h1>
   <p>${description}</p>
-  <p><b>Temperament: </b>${temperament}</p>`);
+  <p><b>Temperament: </b>${temperament}</p><div>`);
+}
+
+function loadingToogle() {
+  refs.loader.classList.toggle('hidden');
+}
+
+function hideCollectionToogle() {
+  refs.breedSelect.classList.toggle('hidden');
+}
+
+function errorToogle() {
+  refs.error.classList.toggle('hidden');
 }

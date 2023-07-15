@@ -10,35 +10,27 @@ const axiosInstance = axios.create({
 });
 
 export function fetchBreeds() {
+  const END_POINT = '/breeds';
   return axiosInstance
-    .get('/breeds')
+    .get(END_POINT)
     .then(function (response) {
-      //   return response;
-      //   console.log(response.data);
       return response.data;
     })
     .catch(function (error) {
-      // handle error
-      console.log(error);
-    })
-    .finally(function () {
-      // always executed
+      console.error(error.message);
+      return error;
     });
 }
 
 export function fetchCatByBreed(breedId) {
+  const END_POINT = 'images/search?breed_ids=';
   return axiosInstance
-    .get(`images/search?breed_ids=${breedId}`)
+    .get(`${END_POINT}${breedId}`)
     .then(function (response) {
-      //   return response;
-      // console.log(response.data);
       return response.data;
     })
     .catch(function (error) {
-      // handle error
-      console.log(error);
-    })
-    .finally(function () {
-      // always executed
+      console.error(error.message);
+      return error;
     });
 }
