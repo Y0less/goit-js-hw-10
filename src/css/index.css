@@ -1,0 +1,27 @@
+.error {
+    color: red;
+}
+
+.breed-select {
+    margin-left: 20px;
+    margin-top: 20px;
+    height: 30px;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+
+.cat-info {
+    display: flex;
+    margin: 20px;
+
+}
+
+.js-cat-descr {
+    margin: 20px;
+    width: 500px;
+}
+
+.hidden {
+    display: none;
+}
