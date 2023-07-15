@@ -40,6 +40,11 @@ body {
     width: 850px
 }
 
+img {
+    object-fit: contain;
+    width: 300px
+}
+
 .loader {
     width: 48px;
     height: 48px;

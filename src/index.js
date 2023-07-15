@@ -62,7 +62,7 @@ function renderCatDescr(data = []) {
   const { name, description, temperament } = data[0].breeds[0];
   refs.catInfo.innerHTML =
     ('beforeend',
-    `<img src="${data[0].url}" alt="" width="300">
+    `<img src="${data[0].url}" alt="${name}">
         <div class="js-cat-descr">
   <h1>${name}</h1>
   <p>${description}</p>
